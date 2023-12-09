@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+<h1 class="mx-4 mt-3">Inside the tigerFood</h1>
+
+<div class="d-flex flex-wrap m-auto">
+  {% for i in meals %}
+  <div class="card col-md-12 m-2 p-1" style="width: 18rem">
+    <img src="{{ i.strMealThumb }}" class="card-img-top" alt="meals" />
+    <div class="card-body">
+      <h5 class="card-title">{{ i.idCategory }}</h5>
+      <h5 class="card-title">{{ i.idMeal }}</h5>
+      <p class="card-text">{{ i.strMeal }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
