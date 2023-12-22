@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+<h1>home page:</h1>
+
+{% if data %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Musician Name</th>
+      <th scope="col">Email</th>
+      <!-- <th scope="col">Album Rating</th> -->
+      <th scope="col">Instrument Type</th>
+      <th scope="col">Album Name</th>
+      <th scope="col">Release Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for dt in data %}
+    <td>
+      <tr>
+        <th scope="row">{{dt.id}}</th>
+        <td>{{dt.musician.firstname}}</td>
+        <td>{{dt.musician.Email}}</td>
+        <td>{{dt.musician.InstrumentType}}</td>
+        <td>{{dt.name}}</td>
+        <td>{{dt.created_at}}</td>
+        <td>
+          <a
+            class="btn btn-warning text-white"
+            href="{% url 'edit_album' dt.id %}"
+            >Edit</a
+          ><a
+            class="btn btn-danger text-white m-2"
+            href="{% url 'delete_album' dt.id %}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+    </td>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<h4>Sorry!! NO albums for now....</h4>
+{% endif %} {% endblock %}
